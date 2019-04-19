@@ -13,9 +13,12 @@ def bubble_sort_by(arr)
         tempSizeArray = 0;
         for i in 1..sizeArr-1 do
             if arr[i-1] > arr[i]
+            if block_given?
                 if yield(arr[i-1], arr[i]) > 0
                     swipe(arr, i-1,i )
                 end
+            end 
+                swipe(arr, i-1,i )
                 tempSizeArray = i
             end #if
         end  #for
@@ -24,8 +27,12 @@ def bubble_sort_by(arr)
 arr
 end
 
-sorted_by = bubble_sort_by(["hi", "hey", "hello"]) {|first, second| 
-        first.length - second.length
-} 
+# sorted_with_block = bubble_sort_by(["heya", "lp", "c", "a"]) { |first, second| 
+    
+#     first.length - second.length } 
 
-p sorted_by
+# p sorted_with_block
+
+# sorted_without_block = bubble_sort_by(["heya", "lp", "c", "a"])
+
+# p sorted_without_block
